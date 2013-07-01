@@ -1,0 +1,44 @@
+<jnlp spec="6.0+" codebase="$$codebase" href="$$name">
+	<information>
+        <title>JxBrowser resources</title>
+        <vendor>TeamDev Ltd.</vendor>
+        <homepage href="http://www.teamdev.com/jxbrowser"/>
+        <offline-allowed/>
+    </information>
+    <security>
+        <all-permissions/>
+    </security>
+    <component-desc/>
+
+	<resources>
+		<j2se version="1.6+" />
+		<jar href="lib/jxbrowser-3.4.jar" />
+		<jar href="lib/jniwrap-3.8.4.jar" />
+		<jar href="lib/runtime-1.1.jar" />
+		<jar href="lib/engine-gecko-1.1.jar"/>
+		<jar href="lib/engine-gecko15-1.1.jar"/>
+	</resources>
+ 	<resources os="Windows">
+        <j2se version="1.6+" initial-heap-size="128m" max-heap-size="512m"/>
+		<jar href="lib/comfyj-2.10.jar" />
+		<jar href="lib/engine-ie-1.1.jar" />
+		<jar href="lib/winpack-3.8.4.jar" />
+		<jar href="lib/xulrunner-windows-1.1.jar" />
+		<jar href="lib/xulrunner15-windows-1.1.jar" />
+    </resources>
+	<resources os="Mac OS X">
+		<j2se version="1.6+" initial-heap-size="128m" max-heap-size="512m"  />
+		<jar href="lib/xulrunner-mac-1.1.jar" />
+		<jar href="lib/xulrunner15-mac-1.1.jar" />
+		<jar href="lib/engine-webkit-1.1.jar" />
+	</resources>
+	<resources os="Linux">
+		<j2se version="1.6+" initial-heap-size="128m" max-heap-size="512m" />
+	</resources>
+	<resources os="Linux" arch="ppc i386 i686">
+		<jar href="lib/xulrunner-linux-1.1.jar" />
+	</resources>
+	<resources os="Linux" arch="x86_64 amd64">
+		<jar href="lib/xulrunner-linux64-1.1.jar" />
+	</resources>
+</jnlp>

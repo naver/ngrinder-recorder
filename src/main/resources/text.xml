@@ -1,0 +1,1920 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<http-recording xmlns="http://grinder.sourceforge.net/tcpproxy/http/1.0">
+	<metadata>
+		<version>The Grinder 3.11</version>
+		<time>2013-03-27T15:09:16.459+09:00</time>
+		<test-number-offset>0</test-number-offset>
+	</metadata>
+	<common-headers headers-id="defaultHeaders">
+		<header name="Accept-Encoding" value="gzip, deflate" />
+		<header name="Accept-Language" value="ko,Korean;q=0.7,en-US;q=0.3" />
+		<header name="User-Agent"
+			value="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64;; APCPMS=E839.353E.B2A0-win7^N20120502090046254556C65BBCE3E22DEE3F_4641^1^1^1594442250^30287303^1318727312; Trident/5.0; TCO_20130327150529)" />
+	</common-headers>
+	<common-headers headers-id="headers0" extends="defaultHeaders">
+		<header name="Accept" value="*/*" />
+		<header name="Referer" value="http://ngrinder.nhncorp.com/perftest/" />
+	</common-headers>
+	<common-headers headers-id="headers1" extends="defaultHeaders">
+		<header name="Accept" value="*/*" />
+		<header name="Referer" value="http://ngrinder.nhncorp.com/perftest/" />
+	</common-headers>
+	<common-headers headers-id="headers2" extends="defaultHeaders">
+		<header name="Accept" value="*/*" />
+		<header name="Referer" value="http://ngrinder.nhncorp.com/perftest/6114" />
+	</common-headers>
+	<common-headers headers-id="headers3" extends="defaultHeaders">
+		<header name="Accept" value="*/*" />
+		<header name="Referer" value="http://ngrinder.nhncorp.com/perftest/6114/report" />
+	</common-headers>
+	<base-uri uri-id="ngrinder_nhncorp_com">
+		<scheme>http</scheme>
+		<host>ngrinder.nhncorp.com</host>
+		<port>80</port>
+	</base-uri>
+	<token token-id="token_switchUser">
+		<name>switchUser</name>
+	</token>
+	<token token-id="token_r">
+		<name>r</name>
+	</token>
+	<token token-id="token_ownerId">
+		<name>ownerId</name>
+	</token>
+	<token token-id="token_pagesort">
+		<name>page.sort</name>
+	</token>
+	<token token-id="token_pagesortdir">
+		<name>page.sort.dir</name>
+	</token>
+	<token token-id="token_pagepage">
+		<name>page.page</name>
+	</token>
+	<token token-id="token_pagesize">
+		<name>page.size</name>
+	</token>
+	<token token-id="token_id">
+		<name>id</name>
+	</token>
+	<token token-id="token_isClone">
+		<name>isClone</name>
+	</token>
+	<token token-id="token_scriptRevision">
+		<name>scriptRevision</name>
+	</token>
+	<token token-id="token_targetHosts">
+		<name>targetHosts</name>
+	</token>
+	<token token-id="token_duration">
+		<name>duration</name>
+	</token>
+	<token token-id="token_durationHour">
+		<name>durationHour</name>
+	</token>
+	<token token-id="token_scheduledTime">
+		<name>scheduledTime</name>
+	</token>
+	<token token-id="token_status">
+		<name>status</name>
+	</token>
+	<token token-id="token_statusType">
+		<name>statusType</name>
+	</token>
+	<token token-id="token_scriptPath">
+		<name>scriptPath</name>
+	</token>
+	<token token-id="token__">
+		<name>_</name>
+	</token>
+	<token token-id="token_imgWidth">
+		<name>imgWidth</name>
+	</token>
+	<token token-id="token_startTime">
+		<name>startTime</name>
+	</token>
+	<token token-id="token_finishTime">
+		<name>finishTime</name>
+	</token>
+	<token token-id="token_testId">
+		<name>testId</name>
+	</token>
+	<token token-id="token_dataType">
+		<name>dataType</name>
+	</token>
+	<page>
+		<request>
+			<time>2013-03-27T15:10:19.459+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/perftest/</unparsed>
+				<path>
+					<text>/perftest/</text>
+				</path>
+			</uri>
+			<headers extends="defaultHeaders">
+				<header name="Accept"
+					value="application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, application/msword, application/vnd.ms-powerpoint, application/vnd.ms-excel, */*" />
+				<header name="Referer" value="http://ngrinder.nhncorp.com/" />
+			</headers>
+			<description>GET /</description>
+			<response status-code="200" reason-phrase="OK">
+				<token-reference source="RESPONSE_BODY_URI_QUERY_STRING" token-id="token_switchUser">
+					<new-value />
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_URI_QUERY_STRING" token-id="token_r">
+					<new-value>6</new-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>17</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>24</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>17</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>17</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>23</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>22</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>17</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>17</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>17</value>
+					</conflicting-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_URI_QUERY_STRING" token-id="token_ownerId">
+					<new-value>nb11454</new-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>nb10148</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>lp10046</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>nb10148</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>nb10148</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>lp10046</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>lp10046</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>nb10148</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>nb10148</value>
+					</conflicting-value>
+					<conflicting-value source="RESPONSE_BODY_URI_QUERY_STRING">
+						<value>nb10148</value>
+					</conflicting-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_pagesort">
+					<new-value>lastModifiedDate</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_pagesortdir">
+					<new-value>DESC</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_pagepage">
+					<new-value>1</new-value>
+				</token-reference>  
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_pagesize">
+					<new-value>10</new-value>
+				</token-reference>
+			</response>
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.613+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/jquery-1.7.2.min.js</unparsed>
+				<path>
+					<text>/js/jquery-1.7.2.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET jquery-1.7.2.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.613+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/css/ngrinder.css?3.1.3</unparsed>
+				<path>
+					<text>/css/ngrinder.css</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Thu, 07 Mar 2013 04:45:00 GMT" />
+			</headers>
+			<description>GET ngrinder.css</description>
+			<sleep-time>46</sleep-time>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.614+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/bootstrap.min.js?3.1.3</unparsed>
+				<path>
+					<text>/js/bootstrap.min.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET bootstrap.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.622+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/bootbox.min.js</unparsed>
+				<path>
+					<text>/js/bootbox.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET bootbox.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.624+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/utils.js?3.1.3</unparsed>
+				<path>
+					<text>/js/utils.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Mon, 18 Feb 2013 04:58:32 GMT" />
+			</headers>
+			<description>GET utils.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.624+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/jquery.validate.min.js</unparsed>
+				<path>
+					<text>/js/jquery.validate.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Fri, 15 Feb 2013 14:16:16 GMT" />
+			</headers>
+			<description>GET jquery.validate.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.628+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/datatables/css/bootstrap.dataTables.css</unparsed>
+				<path>
+					<text>/plugins/datatables/css/bootstrap.dataTables.css</text>
+				</path>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET bootstrap.dataTables.css</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.629+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/css/bootstrap.min.css</unparsed>
+				<path>
+					<text>/css/bootstrap.min.css</text>
+				</path>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Fri, 15 Feb 2013 14:16:16 GMT" />
+			</headers>
+			<description>GET bootstrap.min.css</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.630+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/datatables/js/jquery.dataTables.min.js</unparsed>
+				<path>
+					<text>/plugins/datatables/js/jquery.dataTables.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET jquery.dataTables.min.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.630+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/datatables/js/bootstrap.dataTables.js</unparsed>
+				<path>
+					<text>/plugins/datatables/js/bootstrap.dataTables.js</text>
+				</path>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET bootstrap.dataTables.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.636+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/select2/select2.css</unparsed>
+				<path>
+					<text>/plugins/select2/select2.css</text>
+				</path>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET select2.css</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.636+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/select2/select2.min.js</unparsed>
+				<path>
+					<text>/plugins/select2/select2.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET select2.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.642+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/logo_ngrinder_a_header_inv.png</unparsed>
+				<path>
+					<text>/img/logo_ngrinder_a_header_inv.png</text>
+				</path>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET logo_ngrinder_a_header_inv.png</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.642+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/cluster_icon.png</unparsed>
+				<path>
+					<text>/img/cluster_icon.png</text>
+				</path>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Fri, 15 Feb 2013 14:16:16 GMT" />
+			</headers>
+			<description>GET cluster_icon.png</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.644+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/bg_perftest_banner_en.png?3.1.3</unparsed>
+				<path>
+					<text>/img/bg_perftest_banner_en.png</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET bg_perftest_banner_en.png</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.648+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/ball/red.png</unparsed>
+				<path>
+					<text>/img/ball/red.png</text>
+				</path>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET red.png</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.648+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/datatables/css/demo_table.css</unparsed>
+				<path>
+					<text>/plugins/datatables/css/demo_table.css</text>
+				</path>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET demo_table.css</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.684+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/glyphicons-halflings.png</unparsed>
+				<path>
+					<text>/img/glyphicons-halflings.png</text>
+				</path>
+			</uri>
+			<headers extends="headers0">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET glyphicons-halflings.png</description>
+			<sleep-time>20</sleep-time>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.691+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/ball/grey.png</unparsed>
+				<path>
+					<text>/img/ball/grey.png</text>
+				</path>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET grey.png</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.745+09:00</time>
+			<method>POST</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/perftest/updateStatus</unparsed>
+				<path>
+					<text>/perftest/updateStatus</text>
+				</path>
+			</uri>
+			<headers extends="headers1">
+				<header name="Content-Type" value="application/x-www-form-urlencoded; charset=UTF-8" />
+			</headers>
+			<description>POST updateStatus</description>
+			<sleep-time>48</sleep-time>
+			<body>
+				<content-type>application/x-www-form-urlencoded; charset=UTF-8</content-type>
+				<form multipart="false">
+					<form-field name="ids" value="" />
+				</form>
+			</body>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.746+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/icon_today.png</unparsed>
+				<path>
+					<text>/img/icon_today.png</text>
+				</path>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET icon_today.png</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.746+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/icon_yesterday.png</unparsed>
+				<path>
+					<text>/img/icon_yesterday.png</text>
+				</path>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET icon_yesterday.png</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.747+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/glyphicons-halflings-white.png</unparsed>
+				<path>
+					<text>/img/glyphicons-halflings-white.png</text>
+				</path>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET glyphicons-halflings-white.png</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.816+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/select2/select2.png</unparsed>
+				<path>
+					<text>/plugins/select2/select2.png</text>
+				</path>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET select2.png</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:19.816+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/datatables/images/sort_both.png</unparsed>
+				<path>
+					<text>/plugins/datatables/images/sort_both.png</text>
+				</path>
+			</uri>
+			<headers extends="headers0" />
+			<description>GET sort_both.png</description>
+			<sleep-time>60</sleep-time>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+	</page>
+	<page>
+		<request>
+			<time>2013-03-27T15:10:21.163+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/perftest/6114</unparsed>
+				<path>
+					<text>/perftest/6114</text>
+				</path>
+			</uri>
+			<headers extends="defaultHeaders">
+				<header name="Accept"
+					value="application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, application/msword, application/vnd.ms-powerpoint, application/vnd.ms-excel, */*" />
+				<header name="Referer" value="http://ngrinder.nhncorp.com/perftest/" />
+			</headers>
+			<description>GET 6114</description>
+			<sleep-time>1298</sleep-time>
+			<response status-code="200" reason-phrase="OK">
+				<token-reference source="RESPONSE_BODY_URI_QUERY_STRING" token-id="token_switchUser" />
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_id">
+					<new-value>6114</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_isClone">
+					<new-value>true</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_scriptRevision">
+					<new-value>6</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_targetHosts">
+					<new-value>hspidp701.svr.hangame.com</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_duration">
+					<new-value>300000</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_durationHour">
+					<new-value>0</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_scheduledTime">
+					<new-value>100</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_status">
+					<new-value>STOP_ON_ERROR</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_statusType">
+					<new-value>ERROR</new-value>
+				</token-reference>
+			</response>
+		</request>
+		<request>
+			<time>2013-03-27T15:10:21.983+09:00</time>
+			<method>POST</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/perftest/updateStatus</unparsed>
+				<path>
+					<text>/perftest/updateStatus</text>
+				</path>
+			</uri>
+			<headers extends="headers1">
+				<header name="Content-Type" value="application/x-www-form-urlencoded; charset=UTF-8" />
+			</headers>
+			<description>POST updateStatus</description>
+			<body>
+				<content-type>application/x-www-form-urlencoded; charset=UTF-8</content-type>
+				<form multipart="false">
+					<form-field name="ids" value="" />
+				</form>
+			</body>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.004+09:00</time>
+			<method>POST</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/perftest/updateStatus</unparsed>
+				<path>
+					<text>/perftest/updateStatus</text>
+				</path>
+			</uri>
+			<headers extends="headers1">
+				<header name="Content-Type" value="application/x-www-form-urlencoded; charset=UTF-8" />
+			</headers>
+			<description>POST updateStatus</description>
+			<sleep-time>2012</sleep-time>
+			<body>
+				<content-type>application/x-www-form-urlencoded; charset=UTF-8</content-type>
+				<form multipart="false">
+					<form-field name="ids" value="" />
+				</form>
+			</body>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.379+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/bootstrap.min.js?3.1.3</unparsed>
+				<path>
+					<text>/js/bootstrap.min.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET bootstrap.min.js</description>
+			<sleep-time>31</sleep-time>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.379+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/css/ngrinder.css?3.1.3</unparsed>
+				<path>
+					<text>/css/ngrinder.css</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Thu, 07 Mar 2013 04:45:00 GMT" />
+			</headers>
+			<description>GET ngrinder.css</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.379+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/css/bootstrap.min.css</unparsed>
+				<path>
+					<text>/css/bootstrap.min.css</text>
+				</path>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Fri, 15 Feb 2013 14:16:16 GMT" />
+			</headers>
+			<description>GET bootstrap.min.css</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.379+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/jquery-1.7.2.min.js</unparsed>
+				<path>
+					<text>/js/jquery-1.7.2.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET jquery-1.7.2.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.384+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/utils.js?3.1.3</unparsed>
+				<path>
+					<text>/js/utils.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Mon, 18 Feb 2013 04:58:32 GMT" />
+			</headers>
+			<description>GET utils.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.386+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/jquery.validate.min.js</unparsed>
+				<path>
+					<text>/js/jquery.validate.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Fri, 15 Feb 2013 14:16:16 GMT" />
+			</headers>
+			<description>GET jquery.validate.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.386+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/css/jquery.jqplot.min.css</unparsed>
+				<path>
+					<text>/plugins/jqplot/css/jquery.jqplot.min.css</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET jquery.jqplot.min.css</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.387+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/bootbox.min.js</unparsed>
+				<path>
+					<text>/js/bootbox.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET bootbox.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.389+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/js/excanvas.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/js/excanvas.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET excanvas.min.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.391+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.cursor.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.cursor.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET jqplot.cursor.min.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.393+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.highlighter.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.highlighter.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET jqplot.highlighter.min.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.394+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.canvasTextRenderer.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.canvasTextRenderer.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET jqplot.canvasTextRenderer.min.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.402+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET jqplot.canvasAxisTickRenderer.min.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.408+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET jqplot.canvasAxisLabelRenderer.min.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.411+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/drawChart.js?3.1.3</unparsed>
+				<path>
+					<text>/js/drawChart.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET drawChart.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.414+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/jquery.sparkline.min.js</unparsed>
+				<path>
+					<text>/js/jquery.sparkline.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET jquery.sparkline.min.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.415+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/css/slider.css</unparsed>
+				<path>
+					<text>/css/slider.css</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET slider.css</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.422+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/datepicker/css/datepicker.css</unparsed>
+				<path>
+					<text>/plugins/datepicker/css/datepicker.css</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET datepicker.css</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.424+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/select2/select2.css</unparsed>
+				<path>
+					<text>/plugins/select2/select2.css</text>
+				</path>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET select2.css</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.425+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/js/jquery.jqplot.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/js/jquery.jqplot.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET jquery.jqplot.min.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.429+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/select2/select2.min.js</unparsed>
+				<path>
+					<text>/plugins/select2/select2.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET select2.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.429+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/logo_ngrinder_a_header_inv.png</unparsed>
+				<path>
+					<text>/img/logo_ngrinder_a_header_inv.png</text>
+				</path>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET logo_ngrinder_a_header_inv.png</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.434+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/cluster_icon.png</unparsed>
+				<path>
+					<text>/img/cluster_icon.png</text>
+				</path>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Fri, 15 Feb 2013 14:16:16 GMT" />
+			</headers>
+			<description>GET cluster_icon.png</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.435+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/ball/red.png</unparsed>
+				<path>
+					<text>/img/ball/red.png</text>
+				</path>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET red.png</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.566+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/glyphicons-halflings.png</unparsed>
+				<path>
+					<text>/img/glyphicons-halflings.png</text>
+				</path>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET glyphicons-halflings.png</description>
+			<sleep-time>126</sleep-time>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.567+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/datepicker/js/bootstrap-datepicker.js</unparsed>
+				<path>
+					<text>/plugins/datepicker/js/bootstrap-datepicker.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET bootstrap-datepicker.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.568+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/bootstrap-slider.min.js</unparsed>
+				<path>
+					<text>/js/bootstrap-slider.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET bootstrap-slider.min.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.570+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/rampup.js?3.1.3</unparsed>
+				<path>
+					<text>/js/rampup.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET rampup.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.571+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/queue.js?3.1.3</unparsed>
+				<path>
+					<text>/js/queue.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET queue.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.692+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/perftest/getResourcesOnScriptFolder?scriptPath=hspidp701.svr.hangame.com/hsp/login.nhn/script.py&amp;r=6&amp;_=1364364624689</unparsed>
+				<path>
+					<text>/perftest/getResourcesOnScriptFolder</text>
+				</path>
+				<query-string>
+					<token-reference token-id="token_scriptPath">
+						<new-value>hspidp701.svr.hangame.com/hsp/login.nhn/script.py</new-value>
+					</token-reference>
+					<text>&amp;</text>
+					<token-reference token-id="token_r" />
+					<text>&amp;</text>
+					<token-reference token-id="token__">
+						<new-value>1364364624689</new-value>
+					</token-reference>
+				</query-string>
+			</uri>
+			<headers extends="defaultHeaders">
+				<header name="Accept" value="application/json, text/javascript, */*; q=0.01" />
+				<header name="Referer" value="http://ngrinder.nhncorp.com/perftest/6114" />
+			</headers>
+			<description>GET getResourcesOnScriptFolder</description>
+			<sleep-time>115</sleep-time>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.734+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/perftest/6114/loadReportDiv?imgWidth=600&amp;_=1364364624731</unparsed>
+				<path>
+					<text>/perftest/6114/loadReportDiv</text>
+				</path>
+				<query-string>
+					<token-reference token-id="token_imgWidth">
+						<new-value>600</new-value>
+					</token-reference>
+					<text>&amp;</text>
+					<token-reference token-id="token__">
+						<new-value>1364364624731</new-value>
+					</token-reference>
+				</query-string>
+			</uri>
+			<headers extends="defaultHeaders">
+				<header name="Accept" value="text/html, */*; q=0.01" />
+				<header name="Referer" value="http://ngrinder.nhncorp.com/perftest/6114" />
+			</headers>
+			<description>GET loadReportDiv</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.742+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/select2/select2.png</unparsed>
+				<path>
+					<text>/plugins/select2/select2.png</text>
+				</path>
+			</uri>
+			<headers extends="headers2">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET select2.png</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.742+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/icon_expand.png</unparsed>
+				<path>
+					<text>/img/icon_expand.png</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET icon_expand.png</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:24.784+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/open_external.png</unparsed>
+				<path>
+					<text>/img/open_external.png</text>
+				</path>
+			</uri>
+			<headers extends="headers2" />
+			<description>GET open_external.png</description>
+			<sleep-time>23</sleep-time>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+	</page>
+	<page>
+		<request>
+			<time>2013-03-27T15:10:28.981+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/perftest/6114/report</unparsed>
+				<path>
+					<text>/perftest/6114/report</text>
+				</path>
+			</uri>
+			<headers extends="defaultHeaders">
+				<header name="Accept" value="*/*" />
+			</headers>
+			<description>GET report</description>
+			<sleep-time>4109</sleep-time>
+			<response status-code="200" reason-phrase="OK">
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_startTime">
+					<new-value>Mar 27, 2013 3:07:17 PM</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_finishTime">
+					<new-value>Mar 27, 2013 3:08:54 PM</new-value>
+				</token-reference>
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_testId">
+					<new-value>6114</new-value>
+				</token-reference>
+			</response>
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.015+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/css/ngrinder.css?3.1.3</unparsed>
+				<path>
+					<text>/css/ngrinder.css</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 07 Mar 2013 04:45:00 GMT" />
+			</headers>
+			<description>GET ngrinder.css</description>
+			<sleep-time>13</sleep-time>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.016+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/jquery-1.7.2.min.js</unparsed>
+				<path>
+					<text>/js/jquery-1.7.2.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET jquery-1.7.2.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.017+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/css/bootstrap.min.css</unparsed>
+				<path>
+					<text>/css/bootstrap.min.css</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Fri, 15 Feb 2013 14:16:16 GMT" />
+			</headers>
+			<description>GET bootstrap.min.css</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.017+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/bootstrap.min.js?3.1.3</unparsed>
+				<path>
+					<text>/js/bootstrap.min.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET bootstrap.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.021+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/bootbox.min.js</unparsed>
+				<path>
+					<text>/js/bootbox.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET bootbox.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.022+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/utils.js?3.1.3</unparsed>
+				<path>
+					<text>/js/utils.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 18 Feb 2013 04:58:32 GMT" />
+			</headers>
+			<description>GET utils.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.023+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/css/jquery.jqplot.min.css</unparsed>
+				<path>
+					<text>/plugins/jqplot/css/jquery.jqplot.min.css</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 02:56:30 GMT" />
+			</headers>
+			<description>GET jquery.jqplot.min.css</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.023+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/jquery.validate.min.js</unparsed>
+				<path>
+					<text>/js/jquery.validate.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Fri, 15 Feb 2013 14:16:16 GMT" />
+			</headers>
+			<description>GET jquery.validate.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.029+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/js/jquery.jqplot.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/js/jquery.jqplot.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 04:30:04 GMT" />
+			</headers>
+			<description>GET jquery.jqplot.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.029+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/js/excanvas.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/js/excanvas.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:09:00 GMT" />
+			</headers>
+			<description>GET excanvas.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.030+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.cursor.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.cursor.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:08:40 GMT" />
+			</headers>
+			<description>GET jqplot.cursor.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.031+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.highlighter.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.highlighter.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:08:40 GMT" />
+			</headers>
+			<description>GET jqplot.highlighter.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.033+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.canvasTextRenderer.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.canvasTextRenderer.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:08:40 GMT" />
+			</headers>
+			<description>GET jqplot.canvasTextRenderer.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.034+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:08:40 GMT" />
+			</headers>
+			<description>GET jqplot.canvasAxisTickRenderer.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.035+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:08:40 GMT" />
+			</headers>
+			<description>GET jqplot.canvasAxisLabelRenderer.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.036+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/drawChart.js?3.1.3</unparsed>
+				<path>
+					<text>/js/drawChart.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 04:29:24 GMT" />
+			</headers>
+			<description>GET drawChart.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.039+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/jquery.sparkline.min.js</unparsed>
+				<path>
+					<text>/js/jquery.sparkline.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET jquery.sparkline.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.039+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3" />
+			<description>GET jqplot.enhancedLegendRenderer.min.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.041+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/generateImg.js</unparsed>
+				<path>
+					<text>/js/generateImg.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3" />
+			<description>GET generateImg.js</description>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.157+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/glyphicons-halflings-white.png</unparsed>
+				<path>
+					<text>/img/glyphicons-halflings-white.png</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET glyphicons-halflings-white.png</description>
+			<sleep-time>111</sleep-time>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:29.214+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/perftest/6114/graph?dataType=TPS,Errors,Mean_Test_Time_(ms),Mean_time_to_first_byte,User_defined&amp;imgWidth=700</unparsed>
+				<path>
+					<text>/perftest/6114/graph</text>
+				</path>
+				<query-string>
+					<token-reference token-id="token_dataType">
+						<new-value>TPS,Errors,Mean_Test_Time_(ms),Mean_time_to_first_byte,User_defined</new-value>
+					</token-reference>
+					<text>&amp;</text>
+					<token-reference token-id="token_imgWidth">
+						<new-value>700</new-value>
+					</token-reference>
+				</query-string>
+			</uri>
+			<headers extends="defaultHeaders">
+				<header name="Referer" value="http://ngrinder.nhncorp.com/perftest/6114/report" />
+				<header name="Accept" value="application/json, text/javascript, */*; q=0.01" />
+			</headers>
+			<description>GET graph</description>
+			<sleep-time>52</sleep-time>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+	</page>
+	<page>
+		<request>
+			<time>2013-03-27T15:10:35.639+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/perftest/6114/report</unparsed>
+				<path>
+					<text>/perftest/6114/report</text>
+				</path>
+			</uri>
+			<headers extends="defaultHeaders">
+				<header name="Accept"
+					value="application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, application/msword, application/vnd.ms-powerpoint, application/vnd.ms-excel, */*" />
+			</headers>
+			<description>GET report</description>
+			<sleep-time>6394</sleep-time>
+			<response status-code="200" reason-phrase="OK">
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_startTime" />
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_finishTime" />
+				<token-reference source="RESPONSE_BODY_HIDDEN_INPUT" token-id="token_testId" />
+			</response>
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.680+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/css/bootstrap.min.css</unparsed>
+				<path>
+					<text>/css/bootstrap.min.css</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Fri, 15 Feb 2013 14:16:16 GMT" />
+			</headers>
+			<description>GET bootstrap.min.css</description>
+			<sleep-time>15</sleep-time>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.686+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/bootbox.min.js</unparsed>
+				<path>
+					<text>/js/bootbox.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET bootbox.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.695+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/utils.js?3.1.3</unparsed>
+				<path>
+					<text>/js/utils.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 18 Feb 2013 04:58:32 GMT" />
+			</headers>
+			<description>GET utils.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.696+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/jquery-1.7.2.min.js</unparsed>
+				<path>
+					<text>/js/jquery-1.7.2.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET jquery-1.7.2.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.696+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/css/ngrinder.css?3.1.3</unparsed>
+				<path>
+					<text>/css/ngrinder.css</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 07 Mar 2013 04:45:00 GMT" />
+			</headers>
+			<description>GET ngrinder.css</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.697+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/bootstrap.min.js?3.1.3</unparsed>
+				<path>
+					<text>/js/bootstrap.min.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET bootstrap.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.701+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/jquery.validate.min.js</unparsed>
+				<path>
+					<text>/js/jquery.validate.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Fri, 15 Feb 2013 14:16:16 GMT" />
+			</headers>
+			<description>GET jquery.validate.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.703+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/css/jquery.jqplot.min.css</unparsed>
+				<path>
+					<text>/plugins/jqplot/css/jquery.jqplot.min.css</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 02:56:30 GMT" />
+			</headers>
+			<description>GET jquery.jqplot.min.css</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.703+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/js/jquery.jqplot.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/js/jquery.jqplot.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 04:30:04 GMT" />
+			</headers>
+			<description>GET jquery.jqplot.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.707+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/js/excanvas.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/js/excanvas.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:09:00 GMT" />
+			</headers>
+			<description>GET excanvas.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.708+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.cursor.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.cursor.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:08:40 GMT" />
+			</headers>
+			<description>GET jqplot.cursor.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.709+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.highlighter.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.highlighter.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:08:40 GMT" />
+			</headers>
+			<description>GET jqplot.highlighter.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.713+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.canvasTextRenderer.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.canvasTextRenderer.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:08:40 GMT" />
+			</headers>
+			<description>GET jqplot.canvasTextRenderer.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.714+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:08:40 GMT" />
+			</headers>
+			<description>GET jqplot.canvasAxisTickRenderer.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.715+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:08:40 GMT" />
+			</headers>
+			<description>GET jqplot.canvasAxisLabelRenderer.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.719+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/drawChart.js?3.1.3</unparsed>
+				<path>
+					<text>/js/drawChart.js</text>
+				</path>
+				<query-string>
+					<text>3.1.3</text>
+				</query-string>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 04:29:24 GMT" />
+			</headers>
+			<description>GET drawChart.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.724+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/plugins/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js</unparsed>
+				<path>
+					<text>/plugins/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Mon, 25 Mar 2013 03:08:40 GMT" />
+			</headers>
+			<description>GET jqplot.enhancedLegendRenderer.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.724+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/jquery.sparkline.min.js</unparsed>
+				<path>
+					<text>/js/jquery.sparkline.min.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET jquery.sparkline.min.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.728+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/js/generateImg.js</unparsed>
+				<path>
+					<text>/js/generateImg.js</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 21 Mar 2013 07:42:08 GMT" />
+			</headers>
+			<description>GET generateImg.js</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.968+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/glyphicons-halflings-white.png</unparsed>
+				<path>
+					<text>/img/glyphicons-halflings-white.png</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET glyphicons-halflings-white.png</description>
+			<sleep-time>75</sleep-time>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:35.968+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/img/glyphicons-halflings.png</unparsed>
+				<path>
+					<text>/img/glyphicons-halflings.png</text>
+				</path>
+			</uri>
+			<headers extends="headers3">
+				<header name="If-Modified-Since" value="Thu, 14 Feb 2013 06:37:08 GMT" />
+			</headers>
+			<description>GET glyphicons-halflings.png</description>
+			<response status-code="304" reason-phrase="Not Modified" />
+		</request>
+		<request>
+			<time>2013-03-27T15:10:36.006+09:00</time>
+			<method>GET</method>
+			<uri extends="ngrinder_nhncorp_com">
+				<unparsed>/perftest/6114/graph?dataType=TPS,Errors,Mean_Test_Time_(ms),Mean_time_to_first_byte,User_defined&amp;imgWidth=700</unparsed>
+				<path>
+					<text>/perftest/6114/graph</text>
+				</path>
+				<query-string>
+					<token-reference token-id="token_dataType" />
+					<text>&amp;</text>
+					<token-reference token-id="token_imgWidth" />
+				</query-string>
+			</uri>
+			<headers extends="defaultHeaders">
+				<header name="Accept" value="application/json, text/javascript, */*; q=0.01" />
+				<header name="Referer" value="http://ngrinder.nhncorp.com/perftest/6114/report" />
+			</headers>
+			<description>GET graph</description>
+			<sleep-time>32</sleep-time>
+			<response status-code="200" reason-phrase="OK" />
+		</request>
+	</page>
+</http-recording>

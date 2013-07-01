@@ -1,0 +1,108 @@
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<title>nGrinder Recorder</title>
+<style>
+body,td,th {
+	font-size: 15px
+}
+
+table {
+	margin: 10px;
+	border-collapse: collapse;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px
+}
+
+td {
+	padding: 5px;
+	vertical-align: top;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px
+}
+
+th {
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+	<ul>
+		<li><b>프록시가 이 컴퓨터의 다음 포트에 설정되었습니다.</b>
+			<ul>
+				<li>HTTP&nbsp;&nbsp; - ${http_port.host}:${http_port.port?c}</li>
+				<li>HTTPS - ${https_port.host}:${https_port.port?c}</li>
+				<li>디폴트 프록시 포트를 변경하고자 한다면, 계정홈/.ngrinder_recorder/recorder.conf 파일을 수정하세요.</li>
+			</ul></li>
+	</ul>
+	<#if !embedded_browser_recoding_enabled>
+	<ul>
+		<li><b>nGrinder Recorder는 윈도우즈에서만 제대로 내장된 브라우저를 사용한 레코딩을 지원합니다.</b>
+			<ul>
+				<li>OS별 지원 기능 범위는 <a href="http://www.cubrid.org/wiki_ngrinder/entry/recorder-limitation">여기</a>를 참고하세요.</li>
+				<li>맥/리눅스 사용자는 별도의 브라우저에 프록시 셋팅을 하여 레코딩하여야 합니다. <br/>
+				<a href="http://www.cubrid.org/wiki_ngrinder/entry/recorder-recording-guide-for-non-window-user" target="_blank">Recording Guide For Non Window User.</a>을 참고하시기 바랍니다.
+				</li>
+			</ul>
+		</li>
+	</ul>
+	</#if>
+	<ul>
+		<li><b>모바일 기기의 트래픽을 레코딩 하려면 다음 절차를 따르세요.</b>
+			<table style="">
+				<colgroup>
+					<col width="300px" />
+					<col width="300px" />
+				</colgroup>
+				<tr>
+					<th>아이폰</th>
+					<th>안드로이드</th>
+				</tr>
+				<tr>
+					<td>
+						<ul>
+							<li>설정으로 이동</li>
+							<li>Wi-Fi로 이동</li>
+							<li>프록시를 설정하고자 하는 Wi-Fi 선택</li>
+							<li>하단의 HTTP 프록시를 "수동"으로 선택</li>
+							<li>서버에 ${http_port.host}를 설정</li>
+							<li>포트에 ${http_port.port?c}를 설정</li>
+							<li>인증은 선택하지 않음</li>
+						</ul>
+					</td>
+					<td>
+						<ul>
+							<li>어플리케이션 탭으로 이후 설정 메뉴를 탭</li>
+							<li>무선 및 네트웍을 탭.</li>
+							<li>무선 네트웍이 활성화 된것을 확인후, 프락시 서버를 설정하고자 하는 네트웍에 연결.</li>
+							<li>Wi-Fi 설정 메뉴를 탭.</li>
+							<li>가능한 네트웍에서, 사용하고자 하는 네트웍을 탭</li>
+							<li>Wi-Fi 접속을 편집 - 아래로 스크롤하여, 프록시 사용을 선택</li>
+							<li>프록시 호스트 이름을 ${http_port.host}로 설정</li>
+							<li>프록시 포트를 ${http_port.port?c}로 설정</li>
+							<li>저장을 탭</li>
+						</ul>
+					</td>
+				</tr>
+			</table></li>
+	</ul>
+	<ul>
+		<li><b>nGrinder Recorder는 다음을 레코딩 할 수 없습니다.</b>
+			<ul>
+				<li>브라우저에서 자바스크립트에 의해 생성된 쿠키</li>
+				<li>브라우저에서 자바스크립트에 의해 동적으로 생성된 HTTP 호출 파라미터 생성 로직</li>
+				<li>웹 소켓</li>
+			</ul></li>
+		<li><b>nGrinder Recorder에 대한 사용방법은 <a href="http://www.cubrid.org/wiki_ngrinder/entry/recorder"
+				target="_blank">레코더 설명서</a>를 참조하시기 바랍니다.
+		</b></li>
+		<li><b>nGrinder Recorder는 <a href="http://grinder.sourceforge.net/g3/tcpproxy.html" target="_blank">TCPProxy</a>
+				와 <a href="http://www.teamdev.com/jxbrowser/" target="_blank">JXBrowser</a> 에 기반하고 있습니다.
+		</b></li>
+	</ul>
+</body>
+</html>

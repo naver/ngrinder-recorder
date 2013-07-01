@@ -1,0 +1,12 @@
+nGrinder is helped by following open source projects.
+
+- RSyntaxTextArea - http://fifesoft.com/rsyntaxtextarea BSD
+- Apache Commons - Apache 2.0
+- FreeMarker -  http://freemarker.sourceforge.net/
+- The Grinder - http://grinder.sourceforge.net/
+- gson - https://code.google.com/p/google-gson/
+- hamcrest - https://github.com/hamcrest
+- JUnit - http://junit.org/
+- logback - http://logback.qos.ch/
+- Google Guava - https://code.google.com/p/guava-libraries/
+- fest assert - https://code.google.com/p/fest/

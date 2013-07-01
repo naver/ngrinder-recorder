@@ -1,0 +1,47 @@
+<jnlp spec="6.0+" codebase="$$codebase" href="$$name">
+	<information>
+		<title>nGrinder Recorder</title>
+		<vendor>nGrinder</vendor>
+		<homepage href="http://www.nhnopensource.org/ngrinder" />
+		<description>nGrinder Recorder</description>
+		<description kind="short">nGrinder Recorder</description>
+		<icon href="images/recorder32x32.png"/>
+		<icon kind="icon" href="images/recorder32x32.png"/>
+    	<icon kind="splash" href="images/splash.png"/>
+		<offline-allowed />
+		<shortcut online="false">
+      		<desktop/>
+      		<menu submenu="nGrinder"/>
+    	</shortcut>
+    	<update check="timeout" policy="prompt-update"/>
+	</information>
+
+	<security>
+		<all-permissions />
+	</security>
+
+	<application-desc main-class="$mainClass" />
+	
+	<resources>
+		<j2se version="1.6+" />
+		<jar href="lib/ngrinder-recorder-$outputfilename" main="true" />
+		<jar href="lib/jython-2.5.3.jar" />
+		<jar href="lib/grinder-http-3.9.1.jar" />
+		<jar href="lib/grinder-core-3.9.1.jar" />
+		<jar href="lib/picocontainer-2.13.6.jar" />
+		<jar href="lib/slf4j-api-1.6.4.jar" />
+		<jar href="lib/logback-classic-1.0.0.jar" />
+		<jar href="lib/logback-core-1.0.0.jar" />
+		<jar href="lib/grinder-httpclient-3.9.1.jar" />
+		<jar href="lib/grinder-xmlbeans-3.9.1.jar" />
+		<jar href="lib/jsr173-1.0.jar" />
+		<jar href="lib/xmlbeans-2.5.0-p1.jar" />
+		<jar href="lib/stax-api-1.0.1.jar" />
+		<jar href="lib/gson-2.2.jar" />
+		<jar href="lib/freemarker-2.3.19.jar" />
+		<jar href="lib/rsyntaxtextarea-2.0.6.jar" />
+		<jar href="lib/commons-io-2.0.1.jar" />
+		<jar href="lib/commons-lang-2.6.jar" />
+        <extension name="jxbrowser" href="jxbrowser.jnlp"/>
+	</resources>
+</jnlp>

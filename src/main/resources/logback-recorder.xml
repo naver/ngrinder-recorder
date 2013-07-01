@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="log-file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIRECTORY}/ngrinder_recorder.log</file>
+
+		<encoder>
+			<pattern>%d %-5level %logger{36} %marker: %message\n</pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>ngrinder_recorder.log%i</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>2</maxIndex>
+		</rollingPolicy>
+
+		<triggeringPolicy class="net.grinder.util.logback.RollOnStartUp" />
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>10MB</maxFileSize>
+		</triggeringPolicy>
+	</appender>
+
+	<logger name="net.grinder" level="INFO" additivity="false">
+		<appender-ref ref="log-file" />
+	</logger>
+
+	<logger name="org.ngrinder" level="INFO" additivity="false">
+		<appender-ref ref="log-file" />
+	</logger>
+
+	<root>
+		<level value="ERROR" />
+		<appender-ref ref="log-file" />
+	</root>
+</configuration>

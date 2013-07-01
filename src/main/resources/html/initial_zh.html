@@ -1,0 +1,105 @@
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<title>nGrinder录制器</title>
+<style>
+body,td,th {
+	font-size: 15px
+}
+
+table {
+	margin: 10px;
+	border-collapse: collapse;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px
+}
+
+td {
+	padding: 5px;
+	vertical-align: top;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px
+}
+
+th {
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+	<ul>
+		<li><b>录制器代理已经在如下地址启动:</b>
+			<ul>
+				<li>HTTP&nbsp;&nbsp; - ${http_port.host}:${http_port.port?c}</li>
+				<li>HTTPS - ${https_port.host}:${https_port.port?c}</li>
+				<li>如果您想修改默认的代理端口,请修改{user.home}/.ngrinder_recorder/recorder.conf文件</li>
+			</ul></li>
+	</ul>
+	<#if !embedded_browser_recoding_enabled>
+	<ul>
+		<li>有关在各个平台上支持的功能，请参考 <a href="http://www.cubrid.org/wiki_ngrinder/entry/recorder-limitation">录制器的限制</a>。</li>
+		<li><b>使用内置浏览器录制，只能在Windows上使用。</b><ul>
+				<li>如果要在Mac上使用录制器录制脚本，请使用mac系统中安装的其他浏览器进行录制<br/>详情请参考 
+					<a href="http://www.cubrid.org/wiki_ngrinder/entry/recorder-recording-guide-for-non-window-user" target="_blank">Recording Guide For Non Window User.</a>。
+				</li>
+		</ul></li>
+	</ul>
+	</#if>
+	<ul>
+		<li><b>如果要从手机等移动设备连接代理,请按如下配置:</b>
+			<table style="">
+				<colgroup>
+					<col width="300px" />
+					<col width="300px" />
+				</colgroup>
+				<tr>
+					<th>IOS</th>
+					<th>Android</th>
+				</tr>
+				<tr>
+					<td>
+						<ul>
+							<li>打开"设置"</li>
+							<li>进入"无线局域网"中，连接到代理所在的无线网络</li>
+							<li>进入所连接的网络的详细设置，找到下面的HTTP代理设置,并选择手动</li>
+							<li>设置 服务器为 ${http_port.host}</li>
+							<li>设置 端口为 ${http_port.port?c}</li>
+							<li>禁用鉴定</li>
+						</ul>
+					</td>
+					<td>
+						<ul>
+							<li>打开所有应用,打开"设置"</li>
+							<li>打开"无线和网络"</li>
+							<li>确认无线网络已经打开,而且连接到代理所在的局域网</li>
+							<li>连接以后，打开WLAN设置</li>
+							<li>在可选择网络列表中, 找到连接的网络长按,直到出现菜单</li>
+							<li>选择"修改网络"</li>
+							<li>勾选"显示高级选项"，然后选择手动</li>
+							<li>设置 服务器为 ${http_port.host}</li>
+							<li>设置 端口为 ${http_port.port?c}</li>
+							<li>保存退出</li>
+						</ul>
+					</td>
+				</tr>
+			</table></li>
+	</ul>
+	<ul>
+		<li><b>nGrinder录制器无法自动记录下面的内容:</b>
+			<ul>
+				<li>浏览器中由javascript生成的cookie</li>
+				<li>浏览器中由javascript加密的密码</li>
+				<li>由 Web Socket产生的通信</li>
+			</ul></li>
+		<li><b>详细内容请参考 <a href="http://www.cubrid.org/wiki_ngrinder/entry/recorder" target="_blank">脚本录制向导</a>。
+		</b></li>
+		<li><b>nGrinder录制器是基于 <a href="http://grinder.sourceforge.net/g3/tcpproxy.html" target="_blank">TCPProxy</a>
+				和 <a href="http://www.teamdev.com/jxbrowser/" target="_blank">JXBrowser</a>开发。
+		</b></li>
+	</ul>
+</body>
+</html>
