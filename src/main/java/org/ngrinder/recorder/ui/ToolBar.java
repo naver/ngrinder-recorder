@@ -22,7 +22,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.AbstractAction;
@@ -46,15 +45,16 @@ import org.ngrinder.recorder.ui.component.ActionButton;
 import org.ngrinder.recorder.util.AsyncUtil;
 import org.ngrinder.recorder.util.ResourceUtil;
 
-import com.teamdev.jxbrowser.Browser;
-import com.teamdev.jxbrowser.BrowserType;
-import com.teamdev.jxbrowser.Configurable;
-import com.teamdev.jxbrowser.Feature;
-import com.teamdev.jxbrowser.events.NavigationEvent;
-import com.teamdev.jxbrowser.events.NavigationFinishedEvent;
-import com.teamdev.jxbrowser.events.NavigationListener;
-import com.teamdev.jxbrowser.events.TitleChangedEvent;
-import com.teamdev.jxbrowser.events.TitleListener;
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.BrowserPreferences;
+import com.teamdev.jxbrowser.chromium.events.FailLoadingEvent;
+import com.teamdev.jxbrowser.chromium.events.FinishLoadingEvent;
+import com.teamdev.jxbrowser.chromium.events.FrameLoadEvent;
+import com.teamdev.jxbrowser.chromium.events.LoadEvent;
+import com.teamdev.jxbrowser.chromium.events.LoadListener;
+import com.teamdev.jxbrowser.chromium.events.StartLoadingEvent;
+import com.teamdev.jxbrowser.chromium.events.TitleEvent;
+import com.teamdev.jxbrowser.chromium.events.TitleListener;
 
 /**
  * Toobar located in the each {@link TabItem}.
@@ -83,7 +83,8 @@ public class ToolBar extends JPanel {
 	private static final String CLOSE_JAVASCRIPT = "Close JavaScript console";
 
 	private final Browser browser;
-	private final Map<String, Boolean> browserSettings = new HashMap<String, Boolean>();
+	// private final Map<String, Boolean> browserSettings = new HashMap<String,
+	// Boolean>();
 
 	private JButton backwardButton;
 	private JButton forwardButton;
@@ -106,11 +107,11 @@ public class ToolBar extends JPanel {
 		setLayout(new GridBagLayout());
 		setMessageBus();
 		add(createActionsPane(), new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
-						GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		add(createUrlField(), new GridBagConstraints(1, 0, 1, 1, 1.0, 0.0, GridBagConstraints.WEST,
-						GridBagConstraints.BOTH, new Insets(4, 0, 4, 5), 0, 0));
+				GridBagConstraints.BOTH, new Insets(4, 0, 4, 5), 0, 0));
 		add(createMenuButton(), new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0, GridBagConstraints.LINE_END,
-						GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 5), 0, 0));
+				GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 5), 0, 0));
 
 	}
 
@@ -140,7 +141,7 @@ public class ToolBar extends JPanel {
 				final String text = ((JTextField) e.getSource()).getText();
 				AsyncUtil.invokeAsync(new Runnable() {
 					public void run() {
-						browser.navigate(processAddress(text));
+						browser.loadURL(processAddress(text));
 					}
 				});
 			}
@@ -160,50 +161,67 @@ public class ToolBar extends JPanel {
 		});
 		browser.addTitleListener(new TitleListener() {
 			@Override
-			public void titleChanged(TitleChangedEvent arg0) {
-				String currentLocation = arg0.getBrowser().getCurrentLocation();
+			public void onTitleChange(TitleEvent arg0) {
+				String currentLocation = arg0.getBrowser().getURL();
 				result.setText(currentLocation);
 			}
 
 		});
-		browser.addNavigationListener(new NavigationListener() {
-			public void navigationStarted(NavigationEvent event) {
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						refreshButton.setEnabled(false);
-						stopButton.setEnabled(true);
-					}
-				});
+		browser.addLoadListener(new LoadListener() {
+
+			@Override
+			public void onStartLoadingFrame(StartLoadingEvent event) {
+				if (event.isMainFrame()) {
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							refreshButton.setEnabled(false);
+							stopButton.setEnabled(true);
+						}
+					});
+				}
 			}
 
-			public void navigationFinished(final NavigationFinishedEvent event) {
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						refreshButton.setEnabled(true);
-						stopButton.setEnabled(false);
-						AsyncUtil.invokeAsync(new Runnable() {
-							public void run() {
-								final boolean canGoForward = event.getBrowser().canGoForward();
-								final boolean canGoBack = event.getBrowser().canGoBack();
-								SwingUtilities.invokeLater(new Runnable() {
-									public void run() {
-										forwardButton.setEnabled(canGoForward);
-										backwardButton.setEnabled(canGoBack);
-									}
-								});
-							}
-						});
-					}
-				});
+			@Override
+			public void onFinishLoadingFrame(final FinishLoadingEvent event) {
+				if (event.isMainFrame()) {
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							refreshButton.setEnabled(true);
+							stopButton.setEnabled(false);
+							AsyncUtil.invokeAsync(new Runnable() {
+								public void run() {
+									final boolean canGoForward = event.getBrowser().canGoForward();
+									final boolean canGoBack = event.getBrowser().canGoBack();
+									SwingUtilities.invokeLater(new Runnable() {
+										public void run() {
+											forwardButton.setEnabled(canGoForward);
+											backwardButton.setEnabled(canGoBack);
+										}
+									});
+								}
+							});
+						}
+					});
+				}
+			}
+
+			@Override
+			public void onFailLoadingFrame(FailLoadingEvent arg0) {
+			}
+
+			@Override
+			public void onDocumentLoadedInMainFrame(LoadEvent arg0) {
+			}
+
+			@Override
+			public void onDocumentLoadedInFrame(FrameLoadEvent arg0) {
+
 			}
 		});
 		return result;
 	}
 
 	private String processAddress(String text) {
-		if (browser.getType() == BrowserType.Safari) {
-			return text.startsWith("http") ? text : "http://" + text;
-		}
 		return text;
 	}
 
@@ -216,7 +234,7 @@ public class ToolBar extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				messageBus.getPublisher(Topics.HOME).propertyChange(
-								new PropertyChangeEvent(browser, "home", null, null));
+						new PropertyChangeEvent(browser, "home", null, null));
 			}
 		});
 	}
@@ -255,7 +273,7 @@ public class ToolBar extends JPanel {
 			private static final long serialVersionUID = 1081813486182217372L;
 
 			public void actionPerformed(ActionEvent e) {
-				browser.refresh();
+				browser.reload();
 			}
 		});
 	}
@@ -285,9 +303,7 @@ public class ToolBar extends JPanel {
 		final JPopupMenu popupMenu = new JPopupMenu();
 		popupMenu.add(createCloseTabMenuItem());
 		popupMenu.addSeparator();
-		if (!BrowserType.Safari.equals(browser.getType())) {
-			popupMenu.add(createPreferencesMenu());
-		}
+		popupMenu.add(createPreferencesMenu());
 		popupMenu.add(createViewPageSourceMenuItem());
 		consoleMenuItem = createConsoleMenuItem();
 		popupMenu.add(consoleMenuItem);
@@ -353,7 +369,7 @@ public class ToolBar extends JPanel {
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MessageBus.getInstance().getPublisher(Topics.SHOW_ABOUT_DIALOG)
-								.propertyChange(new PropertyChangeEvent(this, "", null, null));
+						.propertyChange(new PropertyChangeEvent(this, "", null, null));
 			}
 		});
 		return menuItem;
@@ -371,22 +387,8 @@ public class ToolBar extends JPanel {
 	}
 
 	private JMenu createPreferencesMenu() {
-		initBrowserSettings();
 		JMenu settingsMenu = new JMenu("Preferences");
-		BrowserType browserType = browser.getType();
-		if (BrowserType.IE.equals(browserType)) {
-			settingsMenu.add(createAllowImagesMenuItem());
-			settingsMenu.add(createAllowScriptsMenuItem());
-			settingsMenu.add(createAllowPluginsMenuItem());
-		}
-		if (BrowserType.Mozilla.equals(browserType)) {
-			settingsMenu.add(createAllowImagesMenuItem());
-			settingsMenu.add(createAllowScriptsMenuItem());
-		}
-		if (BrowserType.Mozilla15.equals(browserType)) {
-			settingsMenu.add(createAllowImagesMenuItem());
-			settingsMenu.add(createAllowScriptsMenuItem());
-		}
+		settingsMenu.add(createAllowScriptsMenuItem());
 		return settingsMenu;
 	}
 
@@ -396,8 +398,8 @@ public class ToolBar extends JPanel {
 			public void actionPerformed(ActionEvent event) {
 				AsyncUtil.invokeAsync(new Runnable() {
 					public void run() {
-						browser.setUserAgent(userAgentString);
-						browser.refresh();
+						BrowserPreferences.setUserAgent(userAgentString);
+						// Recreate is necessary.
 					}
 				});
 			}
@@ -423,7 +425,7 @@ public class ToolBar extends JPanel {
 		createDefaultUserAgentMenuItem(menu);
 		menu.addSeparator();
 		createUAMenuItem(menu, "Firefox 16.0.1",
-						"Mozilla/6.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1");
+				"Mozilla/6.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1");
 		createUAMenuItem(menu, "Firefox 15.0a2", "Mozilla/5.0 (Windows NT 6.1; rv:15.0) Gecko/20120716 Firefox/15.0a2");
 		menu.addSeparator();
 		createUAMenuItem(menu, "IE 10", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)");
@@ -431,40 +433,22 @@ public class ToolBar extends JPanel {
 		createUAMenuItem(menu, "IE 8", "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)");
 		menu.addSeparator();
 		createUAMenuItem(menu, "Safari for iPhone", "Mozilla/5.0 (iPhone; U; CPU iPhone OS 1_2_3 like Mac OS X; en-us)"
-						+ " AppleWebKit/533.17.9 (KHTML, like Gecko) " + "Version/5.0.2 Mobile/8J2 Safari/6533.18.5");
+				+ " AppleWebKit/533.17.9 (KHTML, like Gecko) " + "Version/5.0.2 Mobile/8J2 Safari/6533.18.5");
 		createUAMenuItem(menu, "Safari for iPad", "Mozilla/5.0 (iPad; U; CPU OS 4_3 like Mac OS X; en-us)"
-						+ " AppleWebKit/533.17.9 (KHTML, like Gecko) " + "Version/5.0.2 Mobile/8F191 Safari/6533.18.5");
+				+ " AppleWebKit/533.17.9 (KHTML, like Gecko) " + "Version/5.0.2 Mobile/8F191 Safari/6533.18.5");
 		createUAMenuItem(menu, "Safari for Macintosh",
-						"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) "
-										+ "Version/5.1.7 Safari/534.57.2");
+				"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) "
+						+ "Version/5.1.7 Safari/534.57.2");
 		createUAMenuItem(menu, "Safari for Windows",
-						"Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.20.25 (KHTML, like Gecko) "
-										+ "Version/5.0.4 Safari/533.20.27");
+				"Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.20.25 (KHTML, like Gecko) "
+						+ "Version/5.0.4 Safari/533.20.27");
 
 		return menu;
 	}
 
-	private JCheckBoxMenuItem createAllowImagesMenuItem() {
-		final JCheckBoxMenuItem menuItem = new JCheckBoxMenuItem("Allow Images", browserSettings.get(ALLOW_IMAGES));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				AsyncUtil.invokeAsync(new Runnable() {
-					public void run() {
-						Configurable configurable = browser.getConfigurable();
-						HashMap<Feature, Boolean> featuresMap = new HashMap<Feature, Boolean>();
-						featuresMap.put(Feature.DOWNLOAD_IMAGES, menuItem.isSelected());
-						configurable.setFeatures(featuresMap);
-						browser.refresh();
-					}
-				});
-			}
-		});
-		return menuItem;
-	}
-
 	private JCheckBoxMenuItem createAllowScriptsMenuItem() {
-		final JCheckBoxMenuItem menuItem = new JCheckBoxMenuItem("Allow JavaScript", //
-						browserSettings.get(ALLOW_SCRIPTS));
+		final JCheckBoxMenuItem menuItem = new JCheckBoxMenuItem("Allow JavaScript", false);//
+		// browserSettings.get(ALLOW_SCRIPTS));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				final boolean selected = menuItem.isSelected();
@@ -472,31 +456,16 @@ public class ToolBar extends JPanel {
 				if (!selected) {
 					setTextForMenuItemAndHideConsole(consoleMenuItem);
 				}
-				AsyncUtil.invokeAsync(new Runnable() {
-					public void run() {
-						Configurable configurable = browser.getConfigurable();
-						HashMap<Feature, Boolean> featuresMap = new HashMap<Feature, Boolean>();
-						featuresMap.put(Feature.JAVASCRIPT, selected);
-						configurable.setFeatures(featuresMap);
-						browser.refresh();
-					}
-				});
-			}
-		});
-		return menuItem;
-	}
 
-	private JCheckBoxMenuItem createAllowPluginsMenuItem() {
-		final JCheckBoxMenuItem menuItem = new JCheckBoxMenuItem("Allow Plugins", browserSettings.get(ALLOW_PLUGINS));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
 				AsyncUtil.invokeAsync(new Runnable() {
 					public void run() {
-						Configurable configurable = browser.getConfigurable();
-						HashMap<Feature, Boolean> featuresMap = new HashMap<Feature, Boolean>();
-						featuresMap.put(Feature.PLUGINS, menuItem.isSelected());
-						configurable.setFeatures(featuresMap);
-						browser.refresh();
+						// Configurable configurable =
+						// browser.getConfigurable();
+						// HashMap<Feature, Boolean> featuresMap = new
+						// HashMap<Feature, Boolean>();
+						// featuresMap.put(Feature.JAVASCRIPT, selected);
+						// configurable.setFeatures(featuresMap);
+						// browser.refresh();
 					}
 				});
 			}
@@ -505,25 +474,7 @@ public class ToolBar extends JPanel {
 	}
 
 	private Map<String, Boolean> initBrowserSettings() {
-		BrowserType browserType = browser.getType();
-		Configurable configurable = browser.getConfigurable();
-		Map<Feature, Boolean> features = configurable.getFeatures();
-		if (BrowserType.IE.equals(browserType)) {
-			browserSettings.put(ALLOW_IMAGES, features.get(Feature.DOWNLOAD_IMAGES));
-			browserSettings.put(ALLOW_PLUGINS, features.get(Feature.PLUGINS));
-			browserSettings.put(ALLOW_SCRIPTS, features.get(Feature.JAVASCRIPT));
-		}
-
-		if (BrowserType.Mozilla.equals(browserType)) {
-			browserSettings.put(ALLOW_IMAGES, features.get(Feature.DOWNLOAD_IMAGES));
-			browserSettings.put(ALLOW_SCRIPTS, features.get(Feature.JAVASCRIPT));
-		}
-
-		if (BrowserType.Mozilla15.equals(browserType)) {
-			browserSettings.put(ALLOW_IMAGES, features.get(Feature.DOWNLOAD_IMAGES));
-			browserSettings.put(ALLOW_SCRIPTS, features.get(Feature.JAVASCRIPT));
-		}
-		return browserSettings;
+		return null;
 	}
 
 }

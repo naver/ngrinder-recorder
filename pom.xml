@@ -4,7 +4,7 @@
 	<groupId>org.ngrinder</groupId>
 	<artifactId>ngrinder-recorder</artifactId>
 	<name>ngrinder-recorder</name>
-	<version>3.2.1</version>
+	<version>3.3</version>
 	<properties>
 		<jdk-version>1.6</jdk-version>
 		<source-encoding>UTF-8</source-encoding>
@@ -101,87 +101,13 @@
 		<dependency>
 			<groupId>jxbrowser</groupId>
 			<artifactId>jxbrowser</artifactId>
-			<version>3.4</version>
+			<version>4.0-beta</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>jxbrowser</groupId>
-			<artifactId>jniwrap</artifactId>
-			<version>3.8.4</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>development</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>runtime</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>engine-gecko</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>engine-gecko15</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>engine-webkit</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>engine-ie</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>comfyj</artifactId>
-			<version>2.10</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>winpack</artifactId>
-			<version>3.8.4</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>xulrunner15-windows</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>xulrunner-windows</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>xulrunner15-mac</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>xulrunner-mac</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>engine-webkit</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>xulrunner-linux</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jxbrowser</groupId>
-			<artifactId>xulrunner-linux64</artifactId>
-			<version>1.1</version>
+			<artifactId>jxbrowser-win</artifactId>
+			<version>4.0-beta</version> 
 		</dependency>
 		<!-- Test Lib -->
 		<dependency>

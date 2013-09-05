@@ -36,11 +36,12 @@ import javax.swing.SwingUtilities;
 import org.ngrinder.recorder.event.MessageBus;
 import org.ngrinder.recorder.event.Topics;
 
-import com.teamdev.jxbrowser.Browser;
-import com.teamdev.jxbrowser.events.StatusChangedEvent;
-import com.teamdev.jxbrowser.events.StatusListener;
-import com.teamdev.jxbrowser.events.TitleChangedEvent;
-import com.teamdev.jxbrowser.events.TitleListener;
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.events.FinishLoadingEvent;
+import com.teamdev.jxbrowser.chromium.events.LoadAdapter;
+import com.teamdev.jxbrowser.chromium.events.StartLoadingEvent;
+import com.teamdev.jxbrowser.chromium.events.TitleEvent;
+import com.teamdev.jxbrowser.chromium.events.TitleListener;
 
 /**
  * Browser Content which includes a {@link Browser} messageBus.
@@ -67,14 +68,14 @@ public class BrowserContent extends TabItemContent {
 	public BrowserContent(final Browser browser) {
 		this.browser = browser;
 		this.browser.addTitleListener(new TitleListener() {
-			public void titleChanged(final TitleChangedEvent event) {
+			@Override
+			public void onTitleChange(final TitleEvent event) {
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
 					public void run() {
 						firePropertyChange("PageTitleChanged", null, event.getTitle());
 					}
 				});
-
 			}
 		});
 		this.browser.getComponent().addMouseListener(new MouseAdapter() {
@@ -106,7 +107,7 @@ public class BrowserContent extends TabItemContent {
 	 *            browser title
 	 */
 	public void setHtml(String url, String title) {
-		this.browser.navigate(url);
+		this.browser.loadURL(url);
 	}
 
 	/**
@@ -180,21 +181,26 @@ public class BrowserContent extends TabItemContent {
 		result.setPreferredSize(new Dimension(100, 16));
 		result.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
 		result.setHorizontalAlignment(SwingConstants.LEFT);
-		StatusListener paramStatusListener = new StatusListener() {
-			public void statusChanged(StatusChangedEvent event) {
-				final String statusText = processStatusText(event.getStatusText());
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						result.setText(statusText);
-					}
-				});
+		LoadAdapter loadAdapter = new LoadAdapter() {
+
+			@Override
+			public void onStartLoadingFrame(StartLoadingEvent arg0) {
+				// TODO Auto-generated method stub
+				// final String statusText =
+				// processStatusText(arg0.get.getStatusText());
+				// SwingUtilities.invokeLater(new Runnable() {
+				// public void run() {
+				// result.setText(statusText);
+				// }
+				// });
 			}
 
-			private String processStatusText(String statusText) {
-				return statusText.length() == 0 ? "Done" : statusText;
+			@Override
+			public void onFinishLoadingFrame(FinishLoadingEvent arg0) {
+				// return statusText.length() == 0 ? "Done" : statusText;
 			}
 		};
-		browser.addStatusListener(paramStatusListener);
+		browser.addLoadListener(loadAdapter);
 		return result;
 	}
 
@@ -207,9 +213,9 @@ public class BrowserContent extends TabItemContent {
 	public void dispose() {
 		// It's very important to remove all listener.
 		// Because if it's not removed, the JVM crash will be occurred.
-		for (StatusListener each : browser.getStatusListeners()) {
-			browser.removeStatusListener(each);
-		}
+		// for (StatusListener each : browser.get.getStatusListeners()) {
+		// browser.removeStatusListener(each);
+		// }
 		for (TitleListener each : browser.getTitleListeners()) {
 			browser.removeTitleListener(each);
 		}
@@ -226,6 +232,6 @@ public class BrowserContent extends TabItemContent {
 		if (url == null) {
 			return;
 		}
-		this.browser.navigate(url.toString());
+		this.browser.loadURL(url.toString());
 	}
 }

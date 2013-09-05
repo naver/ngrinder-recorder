@@ -15,8 +15,6 @@ package org.ngrinder.recorder.ui;
 
 import org.ngrinder.recorder.util.ResourceUtil;
 
-import com.teamdev.jxbrowser.BrowserType;
-
 /**
  * New Browser Button Class.
  * 
@@ -29,7 +27,6 @@ public class NewBrowserButton extends TabButton {
 
 	/** UUID. */
 	private static final long serialVersionUID = -6114752964224227198L;
-	private final BrowserType browserType;
 
 	/**
 	 * Constructor.
@@ -37,17 +34,7 @@ public class NewBrowserButton extends TabButton {
 	 * @param browserType
 	 *            browser type
 	 */
-	public NewBrowserButton(BrowserType browserType) {
-		super(ResourceUtil.getIcon(browserType.getName() + "-new.png"), "New " + browserType.getName() + " tab");
-		this.browserType = browserType;
-	}
-
-	/**
-	 * Get the browser type of this button.
-	 * 
-	 * @return {@link BrowserType} instance.
-	 */
-	public BrowserType getBrowserType() {
-		return browserType;
+	public NewBrowserButton() {
+		super(ResourceUtil.getIcon("IE-new.png"), "New browser tab");
 	}
 }

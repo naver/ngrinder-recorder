@@ -22,6 +22,7 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -85,12 +86,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.teamdev.jxbrowser.Browser;
-import com.teamdev.jxbrowser.BrowserServices;
-import com.teamdev.jxbrowser.BrowserType;
-import com.teamdev.jxbrowser.NewWindowContainer;
-import com.teamdev.jxbrowser.NewWindowManager;
-import com.teamdev.jxbrowser.NewWindowParams;
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.PopupContainer;
+import com.teamdev.jxbrowser.chromium.PopupHandler;
+import com.teamdev.jxbrowser.chromium.PopupParams;
 
 import freemarker.cache.StringTemplateLoader;
 import freemarker.template.Configuration;
@@ -139,8 +138,8 @@ public class Recorder {
 	 * @param tabbedPane
 	 *            base tabbed pane
 	 * @param proxyEndPoint
-	 *            proxy endpoints which will be used to show the message how mobile devices connect
-	 *            this proxy
+	 *            proxy endpoints which will be used to show the message how
+	 *            mobile devices connect this proxy
 	 */
 	protected void initTabbedPane(TabbedPane tabbedPane, ProxyEndPointPair proxyEndPoint) {
 		LOGGER.info("Tabbed Pane initalization is initialzed");
@@ -150,7 +149,8 @@ public class Recorder {
 	}
 
 	/**
-	 * Initialize shutdown hook. The created proxy should be stopped for the socket port reusable.
+	 * Initialize shutdown hook. The created proxy should be stopped for the
+	 * socket port reusable.
 	 */
 	protected void initShutdownHook() {
 		Runnable shutdownHook = new Runnable() {
@@ -172,8 +172,9 @@ public class Recorder {
 	}
 
 	/**
-	 * Initialize proxy and get the created proxy. In addition, make it as a proxy for future
-	 * browser invoke. If the proxy creation is failed, it exits the application.
+	 * Initialize proxy and get the created proxy. In addition, make it as a
+	 * proxy for future browser invoke. If the proxy creation is failed, it
+	 * exits the application.
 	 * 
 	 * @return generated proxy port
 	 */
@@ -201,7 +202,7 @@ public class Recorder {
 		int port = recorderConfig.getPropertyInt("proxy.port", NGRINDER_DEFAULT_PORT);
 		if (endPoints.getHttpEndPoint().getPort() != port) {
 			String msg = String.format("Already poxy port %d is used by the other recorder or processes.\n"
-							+ "Recorder will use the %d port instead.", port, endPoints.getHttpEndPoint().getPort());
+					+ "Recorder will use the %d port instead.", port, endPoints.getHttpEndPoint().getPort());
 			JOptionPane.showMessageDialog(frame, msg);
 		}
 	}
@@ -224,8 +225,9 @@ public class Recorder {
 	}
 
 	/**
-	 * Initialize the frame with the given {@link TabbedPane}. It tries to get the last position and
-	 * location saved in the ${NGRINDER_RECORDER_HOME}/last_frame file.
+	 * Initialize the frame with the given {@link TabbedPane}. It tries to get
+	 * the last position and location saved in the
+	 * ${NGRINDER_RECORDER_HOME}/last_frame file.
 	 * 
 	 * @param tabbedPane
 	 *            tabbedPane
@@ -283,10 +285,11 @@ public class Recorder {
 		frame.setSize(size);
 		frame.setVisible(true);
 		frame.requestFocusInWindow();
-		MessageBus.getInstance()
-						.getPublisher(Topics.PREPARE_TO_VIEW)
-						.propertyChange(new PropertyChangeEvent(this, "Prepare to View", null, recorderConfig.getHome()
-										.getDirectory()));
+		MessageBus
+				.getInstance()
+				.getPublisher(Topics.PREPARE_TO_VIEW)
+				.propertyChange(
+						new PropertyChangeEvent(this, "Prepare to View", null, recorderConfig.getHome().getDirectory()));
 		initDisplayDetectionScheduledTask();
 	}
 
@@ -331,7 +334,7 @@ public class Recorder {
 		connect.subscribe(Topics.HOME, new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
 				Browser browser = cast(evt.getSource());
-				browser.navigate(toURL(tempFile).toString());
+				browser.loadURL(toURL(tempFile).toString());
 			}
 		});
 		connect.subscribe(Topics.APPLICATION_CLOSE, new PropertyChangeListener() {
@@ -348,7 +351,7 @@ public class Recorder {
 				}
 
 				messageBusInstance.getPublisher(Topics.PREPARE_TO_CLOSE).propertyChange(
-								new PropertyChangeEvent(this, "PREPARE_TO_CLOSE", null, home));
+						new PropertyChangeEvent(this, "PREPARE_TO_CLOSE", null, home));
 
 				tabbedPane.disposeAllTabs();
 				frame.setVisible(false);
@@ -444,7 +447,7 @@ public class Recorder {
 			EndPoint httpEndPoint = proxyEndPointPair.getHttpEndPoint();
 
 			httpEndPoint = new EndPoint(InetAddress.getByName(httpEndPoint.getHost()).getHostAddress(),
-							httpEndPoint.getPort());
+					httpEndPoint.getPort());
 			hashMap.put("http_port", httpEndPoint);
 			hashMap.put("https_port", httpEndPoint);
 			hashMap.put("embedded_browser_recoding_enabled", isInAppBrowserRecodingSupportEnv());
@@ -468,7 +471,8 @@ public class Recorder {
 	}
 
 	/**
-	 * Setup new windows manager. This defines how to handle new windows in the browser.
+	 * Setup new windows manager. This defines how to handle new windows in the
+	 * browser.
 	 * 
 	 * @param tabFactory
 	 *            {@link TabFactory}
@@ -476,22 +480,28 @@ public class Recorder {
 	 *            {@link TabbedPane}
 	 */
 	protected void setupNewWindowsManager(final TabFactory tabFactory, final TabbedPane tabbedPane) {
-		BrowserServices.getInstance().setNewWindowManager(new NewWindowManager() {
-			public NewWindowContainer evaluateWindow(final NewWindowParams params) {
-				return new NewWindowContainer() {
-					public void insertBrowser(final Browser browser) {
-						final Tab createBrowserTab = tabFactory.createBrowserTab(browser);
-						SwingUtilities.invokeLater(new Runnable() {
-							@Override
-							public void run() {
-								tabbedPane.addTab(createBrowserTab);
-								tabbedPane.selectTab(createBrowserTab);
-							}
-						});
+		PopupContainer popupContainer = new PopupContainer() {
+
+			@Override
+			public void insertBrowser(Browser browser, Rectangle arg1) {
+				browser.setPopupHandler(new PopupHandler() {
+					@Override
+					public PopupContainer handlePopup(PopupParams param) {
+						return BrowserFactoryEx.getPopupContainer();
 					}
-				};
+				});
+
+				final Tab createBrowserTab = tabFactory.createBrowserTab(browser);
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						tabbedPane.addTab(createBrowserTab);
+						tabbedPane.selectTab(createBrowserTab);
+					}
+				});
 			}
-		});
+		};
+		BrowserFactoryEx.setPopupContainer(popupContainer);
 	}
 
 	/**
@@ -506,7 +516,7 @@ public class Recorder {
 	protected JSplitPane createSplitPane(final JComponent left, final JComponent right) {
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, left, right);
 		splitPane.setDividerLocation(splitPane.getSize().width - splitPane.getInsets().right
-						- splitPane.getDividerSize() - 200);
+				- splitPane.getDividerSize() - 200);
 		splitPane.setResizeWeight(1);
 		splitPane.setMinimumSize(new Dimension(600, 600));
 		splitPane.setOneTouchExpandable(true);
@@ -547,7 +557,7 @@ public class Recorder {
 			@Override
 			public void run() {
 				org.python.core.ParserFacade.parse("print 'hello'", CompileMode.exec, "unnamed", new CompilerFlags(
-								CompilerFlags.PyCF_DONT_IMPLY_DEDENT | CompilerFlags.PyCF_ONLY_AST));
+						CompilerFlags.PyCF_DONT_IMPLY_DEDENT | CompilerFlags.PyCF_ONLY_AST));
 			}
 
 		});
@@ -574,8 +584,7 @@ public class Recorder {
 					AsyncUtil.invokeAsync(new Runnable() {
 						public void run() {
 							NewBrowserButton browserButton = (NewBrowserButton) e.getSource();
-							BrowserType browserType = browserButton.getBrowserType();
-							final Tab tab = tabFactory.createBrowserTab(browserType);
+							final Tab tab = tabFactory.createBrowserTab();
 
 							SwingUtilities.invokeLater(new Runnable() {
 								public void run() {

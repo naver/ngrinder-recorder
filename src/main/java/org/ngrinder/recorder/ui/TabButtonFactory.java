@@ -16,10 +16,6 @@ package org.ngrinder.recorder.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ngrinder.recorder.browser.BrowserFactoryEx;
-
-import com.teamdev.jxbrowser.BrowserType;
-
 /**
  * Tab Button Factory.
  * 
@@ -38,15 +34,11 @@ public class TabButtonFactory {
 	 */
 	public List<TabButton> createNewBrowserButtons() {
 		List<TabButton> result = new ArrayList<TabButton>();
-		for (BrowserType each : BrowserFactoryEx.getSupportedBrowser()) {
-			addButtonIfTypeSupported(result, each);
-		}
+		addButtonIfTypeSupported(result);
 		return result;
 	}
 
-	private void addButtonIfTypeSupported(List<TabButton> result, BrowserType type) {
-		if (type.isSupported()) {
-			result.add(new NewBrowserButton(type));
-		}
+	private void addButtonIfTypeSupported(List<TabButton> result) {
+		result.add(new NewBrowserButton());
 	}
 }

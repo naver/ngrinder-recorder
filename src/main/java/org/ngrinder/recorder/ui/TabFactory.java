@@ -25,8 +25,7 @@ import org.python.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.teamdev.jxbrowser.Browser;
-import com.teamdev.jxbrowser.BrowserType;
+import com.teamdev.jxbrowser.chromium.Browser;
 
 /**
  * Tab Factory.
@@ -53,8 +52,8 @@ public class TabFactory {
 	 *            browser type
 	 * @return created tab.
 	 */
-	public Tab createBrowserTab(BrowserType type) {
-		return createBrowserTab(BrowserFactoryEx.create(type));
+	public Tab createBrowserTab() {
+		return createBrowserTab(BrowserFactoryEx.create());
 	}
 
 	/**
@@ -67,7 +66,7 @@ public class TabFactory {
 	public Tab createBrowserTab(Browser browser) {
 		final TabItem tabItem = new TabItem();
 		tabItem.setTitle("about:blank");
-		tabItem.setIcon(ResourceUtil.getIcon(browser.getType().getName() + ".png"));
+		tabItem.setIcon(ResourceUtil.getIcon("IE.png"));
 
 		TabItemContent tabItemContent = new BrowserContent(browser);
 		tabItemContent.addPropertyChangeListener("PageTitleChanged", new PropertyChangeListener() {
@@ -103,10 +102,10 @@ public class TabFactory {
 	 */
 	public Tab createPageSourceTab(Browser browser) {
 		final TabItem tabItem = new TabItem();
-		tabItem.setTitle("Page source: " + browser.getCurrentLocation());
-		tabItem.setIcon(ResourceUtil.getIcon(browser.getType().getName() + ".png"));
+		tabItem.setTitle("Page source: " + browser.getURL());
+		tabItem.setIcon(ResourceUtil.getIcon("IE.png"));
 
-		String pageContent = browser.getContent();
+		String pageContent = browser.getHTML();
 		TabItemContent tabItemContent = new SourcePageContent(pageContent);
 		tabItemContent.addPropertyChangeListener("PageTitleChanged", new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
@@ -123,20 +122,18 @@ public class TabFactory {
 	 */
 	public List<Tab> createSupportedBrowserTabs() {
 		List<Tab> result = Lists.newArrayList();
-		for (BrowserType each : BrowserFactoryEx.getSupportedBrowser()) {
-			try {
-				addBrowserTabIfBrowserTypeSupported(result, each);
-				LOGGER.info("{} is activated", each.getName());
-			} catch (Exception e) {
-				LOGGER.error("Error while creating new browser tab {}", each, e);
-			}
+		try {
+			addBrowserTabIfBrowserTypeSupported(result);
+			LOGGER.info("Chrome is activated", "Chrome");
+		} catch (Exception e) {
+			LOGGER.error("Error while creating new browser tab chrome", e);
+			e.printStackTrace();
 		}
+
 		return result;
 	}
 
-	private void addBrowserTabIfBrowserTypeSupported(List<Tab> result, BrowserType type) {
-		if (type.isSupported()) {
-			result.add(createBrowserTab(type));
-		}
+	private void addBrowserTabIfBrowserTypeSupported(List<Tab> result) {
+		result.add(createBrowserTab());
 	}
 }

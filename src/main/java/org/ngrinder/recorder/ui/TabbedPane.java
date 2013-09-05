@@ -36,8 +36,7 @@ import org.ngrinder.recorder.event.MessageBusConnection;
 import org.ngrinder.recorder.event.Topics;
 import org.ngrinder.recorder.util.AsyncUtil;
 
-import com.teamdev.jxbrowser.Browser;
-import com.teamdev.jxbrowser.BrowserType;
+import com.teamdev.jxbrowser.chromium.Browser;
 
 /**
  * TabbedPane which includes multiple browser instances.
@@ -93,8 +92,7 @@ public class TabbedPane extends JPanel {
 		});
 		connection.subscribe(Topics.ADD_BROWSER_TAB, new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent event) {
-				BrowserType browserType = (BrowserType) event.getSource();
-				Tab tab = tabFactory.createBrowserTab(browserType);
+				Tab tab = tabFactory.createBrowserTab();
 				addTab(tab);
 				selectTab(tab);
 			}
@@ -139,7 +137,7 @@ public class TabbedPane extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2) {
 					MessageBus.getInstance().getPublisher(Topics.WINDOW_MAXIMIZE)
-									.propertyChange(new PropertyChangeEvent(this, "Maximize Window", null, null));
+							.propertyChange(new PropertyChangeEvent(this, "Maximize Window", null, null));
 				} else {
 					super.mouseClicked(e);
 				}
@@ -168,7 +166,8 @@ public class TabbedPane extends JPanel {
 	}
 
 	/**
-	 * Dispose tab. It detects it's the last pane and send the CloseApplication event.
+	 * Dispose tab. It detects it's the last pane and send the CloseApplication
+	 * event.
 	 * 
 	 * @param tab
 	 *            tab to be closed.

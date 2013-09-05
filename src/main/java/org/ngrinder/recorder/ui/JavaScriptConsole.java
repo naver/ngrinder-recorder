@@ -31,8 +31,7 @@ import javax.swing.SwingUtilities;
 import org.ngrinder.recorder.util.AsyncUtil;
 import org.ngrinder.recorder.util.ResourceUtil;
 
-import com.teamdev.jxbrowser.Browser;
-import com.teamdev.jxbrowser.BrowserType;
+import com.teamdev.jxbrowser.chromium.Browser;
 
 /**
  * This class shows the javascript console.
@@ -152,11 +151,8 @@ public class JavaScriptConsole extends JPanel {
 
 	private String executeScript(String script) {
 		try {
-			return browser.executeScript(script);
+			return browser.executeJavaScriptAndReturnValue(script).getString();
 		} catch (Exception e) {
-			if (browser.getType() == BrowserType.IE) {
-				return "The '" + script + "' is undefined.";
-			}
 			return e.getMessage();
 		}
 	}

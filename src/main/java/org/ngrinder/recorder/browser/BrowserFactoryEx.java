@@ -13,40 +13,48 @@
  */
 package org.ngrinder.recorder.browser;
 
-import static net.grinder.util.CollectionUtils.newArrayList;
 import static net.grinder.util.Preconditions.checkNotNull;
 
-import java.util.List;
-
-import org.apache.commons.lang.SystemUtils;
 import org.ngrinder.recorder.infra.NGrinderRuntimeException;
 import org.ngrinder.recorder.infra.RecorderConfig;
 import org.ngrinder.recorder.proxy.ProxyEndPointPair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.teamdev.jxbrowser.Browser;
-import com.teamdev.jxbrowser.BrowserFactory;
-import com.teamdev.jxbrowser.BrowserType;
-import com.teamdev.jxbrowser.proxy.ProxyConfig;
-import com.teamdev.jxbrowser.proxy.ProxyServer;
-import com.teamdev.jxbrowser.proxy.ServerType;
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.BrowserFactory;
+import com.teamdev.jxbrowser.chromium.CreateParams;
+import com.teamdev.jxbrowser.chromium.CustomProxyConfig;
+import com.teamdev.jxbrowser.chromium.HostPortPair;
+import com.teamdev.jxbrowser.chromium.PopupContainer;
+import com.teamdev.jxbrowser.chromium.PopupHandler;
+import com.teamdev.jxbrowser.chromium.PopupParams;
+import com.teamdev.jxbrowser.chromium.SilentDialogHandler;
 
 /**
  * Extended Browser Factory.
  * 
- * This class is responsible to list and create the supported browsers in nGrinder Recorder.
+ * This class is responsible to list and create the supported browsers in
+ * nGrinder Recorder.
  * 
  * @author JunHo Yoon
  * @since 1.0
  */
 public abstract class BrowserFactoryEx {
 	private static final Logger LOGGER = LoggerFactory.getLogger(BrowserFactory.class);
-	private static SilentSecurityHandler securityHandler = new SilentSecurityHandler();
-	private static PromptIgnoreService promptIgnoreService = new PromptIgnoreService();
+	private static SilentDialogHandler silentDialogHandler = new SilentDialogHandler() {
+
+	};
+	private static PopupContainer popupContainer;
 	private static ProxyEndPointPair endPoints;
 	@SuppressWarnings("unused")
 	private static RecorderConfig config;
+	private static PopupHandler popupHandler = new PopupHandler() {
+		@Override
+		public PopupContainer handlePopup(PopupParams param) {
+			return popupContainer;
+		}
+	};
 
 	/**
 	 * Create the browser.
@@ -55,13 +63,13 @@ public abstract class BrowserFactoryEx {
 	 *            browser type.
 	 * @return created browser instance
 	 */
-	public static Browser create(BrowserType type) {
+	public static Browser create() {
 		checkNotNull(endPoints, "setProxyEndPoints() should be called in advance.");
 		try {
-			Browser browser = BrowserFactory.createBrowser(type);
-			browser.getServices().setPromptService(promptIgnoreService);
-			browser.setHttpSecurityHandler(securityHandler);
-			setupBrowserProxy(browser, endPoints);
+			CreateParams param = createBrowserProxy(endPoints);
+			Browser browser = BrowserFactory.create(param);
+			browser.setDialogHandler(silentDialogHandler);
+			browser.setPopupHandler(popupHandler);
 			return browser;
 		} catch (Exception e) {
 			LOGGER.error("Failed to create browser due to ", e);
@@ -69,42 +77,12 @@ public abstract class BrowserFactoryEx {
 		}
 	}
 
-	/**
-	 * Get the supported browser.
-	 * 
-	 * @return supported browser list
-	 */
-	public static List<BrowserType> getSupportedBrowser() {
-		List<BrowserType> result = newArrayList();
-		if (SystemUtils.IS_OS_WINDOWS) {
-			addIfAvailable(result, BrowserType.IE);
-			if (BrowserType.Mozilla15.isSupported()) {
-				addIfAvailable(result, BrowserType.Mozilla15);
-			} else if (BrowserType.Mozilla.isSupported()) {
-				addIfAvailable(result, BrowserType.Mozilla);
-			}
-		} else if (SystemUtils.IS_OS_MAC) {
-			if (BrowserType.Mozilla15.isSupported()) {
-				addIfAvailable(result, BrowserType.Mozilla15);
-			} else if (BrowserType.Mozilla.isSupported()) {
-				addIfAvailable(result, BrowserType.Mozilla);
-			} else {
-				addIfAvailable(result, BrowserType.Safari);
-			}
-		} else {
-			if (BrowserType.Mozilla.isSupported()) {
-				addIfAvailable(result, BrowserType.Mozilla);
-			} else {
-				addIfAvailable(result, BrowserType.Mozilla15);
-			}
-		}
-		return result;
+	public static PopupContainer getPopupContainer() {
+		return BrowserFactoryEx.popupContainer;
 	}
 
-	private static void addIfAvailable(List<BrowserType> result, BrowserType each) {
-		if (each.isSupported()) {
-			result.add(each);
-		}
+	public static void setPopupContainer(PopupContainer popupContainer) {
+		BrowserFactoryEx.popupContainer = popupContainer;
 	}
 
 	/**
@@ -115,6 +93,10 @@ public abstract class BrowserFactoryEx {
 	 */
 	public static void setProxyEndPoints(ProxyEndPointPair endPoints) {
 		BrowserFactoryEx.endPoints = endPoints;
+	}
+
+	public static void setPopupHandler(PopupHandler handler) {
+		BrowserFactoryEx.popupHandler = handler;
 	}
 
 	/**
@@ -135,20 +117,17 @@ public abstract class BrowserFactoryEx {
 	 * @param endPoints
 	 *            endPoints to which the browser connects to
 	 */
-	public static void setupBrowserProxy(Browser browser, ProxyEndPointPair endPoints) {
+	public static CreateParams createBrowserProxy(ProxyEndPointPair endPoints) {
+		CreateParams createParams = CreateParams.createDefault();
 		if (endPoints == null) {
-			return;
+			return createParams;
+		} else {
+			HostPortPair httpServer = new HostPortPair(endPoints.getHttpEndPoint().getHost(), endPoints
+					.getHttpEndPoint().getPort());
+			HostPortPair httpsServer = new HostPortPair(endPoints.getHttpEndPoint().getHost(), endPoints
+					.getHttpEndPoint().getPort());
+			createParams.setProxyConfig(new CustomProxyConfig(httpServer, httpsServer, null, null));
 		}
-		ProxyConfig proxyConfig = browser.getServices().getProxyConfig();
-		ProxyServer proxyServer = new ProxyServer(endPoints.getHttpEndPoint().getHost(), endPoints.getHttpEndPoint()
-						.getPort());
-		proxyConfig.setProxy(ServerType.HTTP, proxyServer);
-		// Only IE supports HTTPS Recording due to JXBrowser XULRunner problem.
-		// This should be fixed soon.
-		if (SystemUtils.IS_OS_WINDOWS) {
-			ProxyServer sslProxyServer = new ProxyServer(endPoints.getHttpsEndPoint().getHost(), endPoints
-							.getHttpsEndPoint().getPort());
-			proxyConfig.setProxy(ServerType.SSL, sslProxyServer);
-		}
+		return createParams;
 	}
 }

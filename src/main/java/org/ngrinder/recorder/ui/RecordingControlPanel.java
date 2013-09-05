@@ -72,17 +72,12 @@ import net.grinder.util.NoOp;
 import net.grinder.util.Pair;
 
 import org.apache.commons.io.FileUtils;
-import org.ngrinder.recorder.browser.BrowserFactoryEx;
 import org.ngrinder.recorder.event.MessageBus;
 import org.ngrinder.recorder.event.Topics;
 import org.ngrinder.recorder.ui.component.DropDownButton;
 import org.ngrinder.recorder.ui.component.JExtendedCheckBox;
 
 import com.google.gson.Gson;
-import com.teamdev.jxbrowser.BrowserServices;
-import com.teamdev.jxbrowser.BrowserType;
-import com.teamdev.jxbrowser.cookie.HttpCookie;
-import com.teamdev.jxbrowser.cookie.HttpCookieStorage;
 
 /**
  * UI Component which contains the recoding options controller.
@@ -172,7 +167,7 @@ public class RecordingControlPanel extends JPanel {
 	}
 
 	private void addGrid(GridBagLayout gbl, GridBagConstraints gbc, Component c, Rectangle rect, double weightx,
-					double weighty) {
+			double weighty) {
 		gbc.gridx = rect.x;
 		gbc.gridy = rect.y;
 		gbc.gridwidth = rect.width;
@@ -303,7 +298,7 @@ public class RecordingControlPanel extends JPanel {
 				ArrayList<String> savedData;
 				try {
 					savedData = (ArrayList<String>) GSON.fromJson(FileUtils.readFileToString(savedFile),
-									ArrayList.class);
+							ArrayList.class);
 
 					for (Component each : container.getComponents()) {
 						if (each instanceof JExtendedCheckBox) {
@@ -393,16 +388,16 @@ public class RecordingControlPanel extends JPanel {
 					button.setText("Stop Recording");
 					button.setSelected(true);
 					messageBus.getPublisher(Topics.START_RECORDING).propertyChange(
-									new PropertyChangeEvent(RecordingControlPanel.this, "Start Recording", null,
-													getFilteredFileTypes()));
+							new PropertyChangeEvent(RecordingControlPanel.this, "Start Recording", null,
+									getFilteredFileTypes()));
 				} else {
 					if (!stopConfirm()) {
 						button.setSelected(true);
 						return;
 					}
 					messageBus.getPublisher(Topics.STOP_RECORDING).propertyChange(
-									new PropertyChangeEvent(RecordingControlPanel.this, "Stop Recording", null, Pair
-													.of(getFilteredFileTypes(), getGenerationOption())));
+							new PropertyChangeEvent(RecordingControlPanel.this, "Stop Recording", null, Pair.of(
+									getFilteredFileTypes(), getGenerationOption())));
 					button.setText("Start Recording");
 				}
 			}
@@ -412,7 +407,7 @@ public class RecordingControlPanel extends JPanel {
 
 	private boolean stopConfirm() {
 		JOptionPane pane = new JOptionPane("Do you want to stop recording?", JOptionPane.WARNING_MESSAGE,
-						JOptionPane.YES_NO_OPTION, null);
+				JOptionPane.YES_NO_OPTION, null);
 		JDialog dialog = pane.createDialog(SwingUtilities.getWindowAncestor(this), "Stop recording");
 		dialog.setVisible(true);
 		Object selectedValue = pane.getValue();
@@ -479,7 +474,7 @@ public class RecordingControlPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				messageBus.getPublisher(Topics.RESET).propertyChange(
-								new PropertyChangeEvent(RecordingControlPanel.this, "RESET", null, null));
+						new PropertyChangeEvent(RecordingControlPanel.this, "RESET", null, null));
 				connectionFilter.makeZeroCount();
 			}
 		}));
@@ -510,20 +505,13 @@ public class RecordingControlPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				BrowserServices browserServices = BrowserServices.getInstance();
-				for (BrowserType type : BrowserFactoryEx.getSupportedBrowser()) {
-					clearCacheIfSupported(browserServices, type);
-				}
-			}
-
-			private void clearCacheIfSupported(BrowserServices browserServices, BrowserType type) {
-				if (type.isSupported()) {
-					try {
-						browserServices.getCacheStorage(type).clearCache();
-					} catch (Exception e) {
-						NoOp.noOp();
-					}
-				}
+				// FIXME
+				/*
+				 * BrowserServices browserServices =
+				 * BrowserServices.getInstance(); for (BrowserType type :
+				 * BrowserFactoryEx.getSupportedBrowser()) {
+				 * clearCacheIfSupported(browserServices, type); }
+				 */
 			}
 
 		}));
@@ -533,22 +521,14 @@ public class RecordingControlPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				BrowserServices browserServices = BrowserServices.getInstance();
-				for (BrowserType type : BrowserFactoryEx.getSupportedBrowser()) {
-					clearCookieIfSupported(browserServices, type);
-				}
-			}
 
-			private void clearCookieIfSupported(BrowserServices browserServices, BrowserType type) {
-				if (type.isSupported()) {
-					try {
-						HttpCookieStorage cookieStorage = browserServices.getCookieStorage(type);
-						List<HttpCookie> cookies = cookieStorage.getCookies();
-						cookieStorage.deleteCookie(cookies);
-					} catch (Exception e) {
-						NoOp.noOp();
-					}
-				}
+				// FIXME
+				/*
+				 * BrowserServices browserServices =
+				 * BrowserServices.getInstance(); for (BrowserType type :
+				 * BrowserFactoryEx.getSupportedBrowser()) {
+				 * clearCookieIfSupported(browserServices, type); }
+				 */
 			}
 
 		}));
