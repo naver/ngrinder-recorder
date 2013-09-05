@@ -10,6 +10,7 @@
 		<source-encoding>UTF-8</source-encoding>
 		<ngrinder.recorder.version>${project.version}</ngrinder.recorder.version>
 		<outputfilename>${project.version}.jar</outputfilename>
+		<jxbrowser.version>4.0-beta</jxbrowser.version>
 	</properties>
 	<dependencies>
 
@@ -101,13 +102,28 @@
 		<dependency>
 			<groupId>jxbrowser</groupId>
 			<artifactId>jxbrowser</artifactId>
-			<version>4.0-beta</version>
+			<version>${jxbrowser.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>jxbrowser</groupId>
 			<artifactId>jxbrowser-win</artifactId>
-			<version>4.0-beta</version> 
+			<version>${jxbrowser.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jxbrowser</groupId>
+			<artifactId>jxbrowser-linux32</artifactId>
+			<version>${jxbrowser.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jxbrowser</groupId>
+			<artifactId>jxbrowser-linux64</artifactId>
+			<version>${jxbrowser.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jxbrowser</groupId>
+			<artifactId>jxbrowser-mac</artifactId>
+			<version>${jxbrowser.version}</version>
 		</dependency>
 		<!-- Test Lib -->
 		<dependency>
