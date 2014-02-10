@@ -543,7 +543,7 @@ public class Recorder {
 
 	private static void initEnvironment() throws Exception {
 		if (GraphicsEnvironment.isHeadless()) {
-			throw new NGrinderRuntimeException("nGrinder Recorder can not run in the headless environment");
+			throw processException("nGrinder Recorder can not run in the headless environment");
 		}
 		System.setProperty("com.apple.eawt.CocoaComponent.CompatibilityMode", "false");
 		System.setProperty("apple.laf.useScreenMenuBar", "false");

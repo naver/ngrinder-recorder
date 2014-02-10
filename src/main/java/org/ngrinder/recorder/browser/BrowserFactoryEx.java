@@ -73,7 +73,7 @@ public abstract class BrowserFactoryEx {
 			return browser;
 		} catch (Exception e) {
 			LOGGER.error("Failed to create browser due to ", e);
-			throw new NGrinderRuntimeException("Failed to create browser due to ", e);
+			throw processException("Failed to create browser due to ", e);
 		}
 	}
 

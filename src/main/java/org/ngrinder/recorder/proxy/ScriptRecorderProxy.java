@@ -244,7 +244,7 @@ public class ScriptRecorderProxy {
 			httpProxyThread.start();
 			LOG.info("Finish proxy initailization.");
 		} catch (Exception e) {
-			throw new NGrinderRuntimeException("Failed to start the tcp proxy engine.", e);
+			throw processException("Failed to start the tcp proxy engine.", e);
 		}
 		return proxyEndPointPair;
 	}

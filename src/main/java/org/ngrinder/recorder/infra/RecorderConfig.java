@@ -95,7 +95,7 @@ public class RecorderConfig {
 		checkNotNull(home);
 		InputStream agentConfIO = loadFromClassPath("recorder.conf");
 		if (agentConfIO == null) {
-			throw new NGrinderRuntimeException("Error while loading agent.conf file");
+			throw processException("Error while loading agent.conf file");
 		}
 		home.copyFileTo(agentConfIO, new File("recorder.conf"), false);
 		IOUtils.closeQuietly(agentConfIO);
@@ -146,10 +146,10 @@ public class RecorderConfig {
 		try {
 			homeDirectory.mkdirs();
 			if (!homeDirectory.canWrite()) {
-				throw new NGrinderRuntimeException("home directory " + userHome + " is not writable.");
+				throw processException("home directory " + userHome + " is not writable.");
 			}
 		} catch (Exception e) {
-			throw new NGrinderRuntimeException("Error while resolve the home directory.", e);
+			throw processException("Error while resolve the home directory.", e);
 		}
 		return new RecorderHome(homeDirectory);
 	}

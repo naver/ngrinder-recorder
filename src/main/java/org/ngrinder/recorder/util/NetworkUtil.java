@@ -300,7 +300,7 @@ public abstract class NetworkUtil {
 			}
 		} catch (Exception e) {
 			LOGGER.error("download file from {} was failed", urlString, e);
-			throw new NGrinderRuntimeException("Error while download " + urlString, e);
+			throw processException("Error while download " + urlString, e);
 		} finally {
 			((HttpURLConnection) connection).disconnect();
 			IOUtils.closeQuietly(os);
